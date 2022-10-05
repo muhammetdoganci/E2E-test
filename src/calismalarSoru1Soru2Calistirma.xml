@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="soru1 ve soru2 çalıştırma">
+    <test name="package">
+        <classes>
+            <class name="tests.calismalar.Soru1"/>
+            <class name="tests.calismalar.Soru2"/>
+        </classes>
+    </test>
+</suite>
