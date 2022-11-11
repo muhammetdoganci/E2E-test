@@ -5,45 +5,43 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.opera.OperaDriver;
 
 import java.time.Duration;
 
 public class CrossDriver {
-
     private CrossDriver(){
 
     }
 
     static WebDriver driver;
 
-    /*
-    Testlerimizi çalıştırdığımızda her seferinde yeni driver oluşturduğu için her test methodu
-    için yeni bir pencere(driver) açıyor. Eğer driver'a bir değer atanmamışsa yani driver==null ise
-    bir kere driver'i çalıştır diyerek bir kere if içini çalıştıracak. Ve driver artık bir kere
-    çalıştığı için ve değer atandığı için null olmayacak ve direk return edecek ve diğer
-    teslerimiz aynı pencere(driver) üzerinde çalışacak
-     */
-
 
     public static WebDriver getDriver(String browser) {
-        //Eger browsere bir deger atanmamışsa .properties daki browser calışır.
-        browser = browser==null ? ConfigReader.getProperty("browser") : browser;
+        //Eğer browser'a bir değer atanmamışsa properties dosyasın'daki browser çalışsın
+        browser = browser == null ? ConfigReader.getProperty("browser") : browser;
 
-        //testlerimizi xml file dan farklı browser lar ile çalıştırabilmek için getDriver() methoduna
-        //parametre atamamız gerekir.
+        //Testlerimizi xml file'dan farklı browserlar ile çalıştırabilmek için getDriver() methoduna parametre
+        //atamamız gerekir.
         if (driver == null) {
             switch (browser){
                 //CrossBrowser için bizim gönderdiğimiz browser üzerinden çalışması için
-                //parametre olarak girdiğimiz değeri yazdık.
+                //buraya parametre olarak girdiğimiz değeri yazdık
                 case "edge" :
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
                     break;
-                case "safari" :
-                    WebDriverManager.safaridriver().setup();
-                    driver = new SafariDriver();
+                case "chrome" :
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                    break;
+                case "opera" :
+                    WebDriverManager.operadriver().setup();
+                    driver = new OperaDriver();
+                    break;
+                case "headless-chrome" :
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                     break;
                 default:
                     WebDriverManager.chromedriver().setup();
@@ -54,7 +52,6 @@ public class CrossDriver {
         }
         return driver;
     }
-
     public static void closeDriver() {
         if (driver != null) { // driver'a değer atanmışsa kapat
             driver.close();
@@ -66,7 +63,4 @@ public class CrossDriver {
             driver.quit();
         driver = null;
     }
-
-
 }
-

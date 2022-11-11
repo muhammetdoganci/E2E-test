@@ -1,4 +1,5 @@
 package tests.calismalar;
+/*
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
@@ -12,6 +13,7 @@ import utilities.Driver;
 public class Soru1 {
     @Test
     public void test1(){
+        /*
 
         // 1. Tarayıcıyı başlat
         // 2. 'http://automationexercise.com' url'sine gidin
@@ -34,4 +36,9 @@ public class Soru1 {
         softAssert.assertTrue(autoPage.girisBasarili.isDisplayed());
 
     }
+
+
 }
+
+ */
+

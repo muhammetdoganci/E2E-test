@@ -21,6 +21,7 @@ public abstract class TestBaseRapor {
     @BeforeTest(alwaysRun = true) //alwaysRun : her zaman çalıştır.
     public void setUpTest() {
         extentReports = new ExtentReports(); // Raporlamayi baslatir
+
         //rapor oluştuktan sonra raporunuz nereye eklensin istiyorsanız buraya yazıyorsunuz.
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());// Üstüste oluşturmasın diye
         String filePath = System.getProperty("user.dir") + "/target/Rapor/rapor"+date+".html";
@@ -30,7 +31,7 @@ public abstract class TestBaseRapor {
         // İstediğiniz bilgileri buraya ekeyebiliyorsunuz.
         extentReports.setSystemInfo("Environment","QA");
         extentReports.setSystemInfo("Browser", ConfigReader.getProperty("browser")); // chrome, firefox
-        extentReports.setSystemInfo("Automation Engineer", "Muhammet");
+        extentReports.setSystemInfo("Automation Engineer", "Erol");
         extentHtmlReporter.config().setDocumentTitle("Rapor");
         extentHtmlReporter.config().setReportName("TestNG Reports");
     }

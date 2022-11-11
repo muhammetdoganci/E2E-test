@@ -28,6 +28,7 @@ public class C03_SoftAssertion extends TestBaseCross {
         //6-arama sonucunun Nutella içerdigini test edin
         sofassert.assertTrue(sonuc.getText().contains("Çokokrem"),"Nutella İçermiyor");
         sofassert.assertAll();
+        System.out.println("Hata varsa burası çalışmaz");
     }
 
 }

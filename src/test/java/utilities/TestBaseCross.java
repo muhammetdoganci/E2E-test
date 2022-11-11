@@ -11,10 +11,11 @@ import org.testng.annotations.Parameters;
 import java.time.Duration;
 
 public class TestBaseCross {
+
     protected WebDriver driver;
     @Parameters("browser")
     @BeforeClass
-    public void setup(@Optional String browser) {
+    public void setUp(@Optional String browser) {
 
         driver = CrossDriver.getDriver(browser);
         driver.manage().window().maximize();
